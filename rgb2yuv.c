@@ -10,8 +10,8 @@
 
 typedef unsigned char	BYTE;
 typedef unsigned short	WORD;
-typedef unsigned long	DWORD;
-typedef signed long		LONG;
+typedef unsigned int	DWORD;
+typedef signed int		LONG;
 typedef int 			BOOL;
 
 #pragma pack(push, 2) // alignment to WORD
