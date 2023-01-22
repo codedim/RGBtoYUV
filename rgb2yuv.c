@@ -10,41 +10,41 @@
 
 typedef unsigned char	BYTE;
 typedef unsigned short	WORD;
-typedef unsigned long	DWORD;
-typedef signed long		LONG;
+typedef unsigned int	DWORD;
+typedef signed int		LONG;
 typedef int 			BOOL;
 
 #pragma pack(push, 2) // alignment to WORD
 
 typedef struct  
 {
-	WORD    bfType;					// The file type; must be BM.
-	DWORD   bfSize;					// The size, in bytes, of the bitmap file.
-	WORD    bfReserved1;
-	WORD    bfReserved2;
-	DWORD   bfOffBits;				// The offset, in bytes, to the bitmap bits.
-									//  for us = sizeof(BITMAPFILEHEADER) + 
-									//  sizeof(BITMAPINFOHEADER)
+	WORD    bfType;					// The file type; must be BM. 2 bytes
+	DWORD   bfSize;					// The size, in bytes, of the bitmap file. 4 bytes
+	WORD    bfReserved1;            // 2 bytes
+	WORD    bfReserved2;			// 2 bytes
+	DWORD   bfOffBits;				// The offset, in bytes, to the bitmap bits. 
+									//  for us = sizeof(BITMAPFILEHEADER) +  
+									//  sizeof(BITMAPINFOHEADER). 4 bytes
 } BITMAPFILEHEADER;
 
 typedef struct 
 {
-	DWORD      biSize;				// sizeof(BITMAPINFOHEADER)
-	LONG       biWidth;				// The width of the bitmap, in pixels.
-	LONG       biHeight;			// The height of the bitmap, in pixels.
+	DWORD      biSize;				// sizeof(BITMAPINFOHEADER). 4 bytes
+	LONG       biWidth;				// The width of the bitmap, in pixels. 4 bytes
+	LONG       biHeight;			// The height of the bitmap, in pixels. 4 bytes
 									//  If biHeight is positive, the bitmap is a 
 									//  bottom-up DIB. If biHeight is negative, 
-									//  the bitmap is a top-down DIB.
-	WORD       biPlanes;			// This value must be set to 1.
-	WORD       biBitCount;          // Bits-per-pixel (for us = 24).
+									//  the bitmap is a top-down DIB. 2 bytes
+	WORD       biPlanes;			// This value must be set to 1. 2 bytes
+	WORD       biBitCount;          // Bits-per-pixel (for us = 24). 4 bytes
 	DWORD      biCompression;		// The type of compression (for us = BI_RGB,
-									//  an uncompressed format.)
+									//  an uncompressed format.) 4 bytes
 	DWORD      biSizeImage;			// The size, in bytes, of the image. This may 
-									//  be set to zero for BI_RGB bitmaps.
-	LONG       biXPelsPerMeter;		// must be 0;
-	LONG       biYPelsPerMeter;     // must be 0;
-	DWORD      biClrUsed;			// must be 0;
-	DWORD      biClrImportant;		// must be 0;
+									//  be set to zero for BI_RGB bitmaps. 4 bytes
+	LONG       biXPelsPerMeter;		// must be 0; 4 bytes
+	LONG       biYPelsPerMeter;     // must be 0; 4 bytes
+	DWORD      biClrUsed;			// must be 0; 4 bytes
+	DWORD      biClrImportant;		// must be 0; 4 bytes
 } BITMAPINFOHEADER;
 
 #pragma pack(pop)
